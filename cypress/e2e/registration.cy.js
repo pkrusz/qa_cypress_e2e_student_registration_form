@@ -32,16 +32,13 @@ describe('Student Registration page', () => {
       .not('.react-datepicker__day--outside-month')
       .click();
 
-    cy.get('#subjectsInput')
-      .type('Math, English, Algebra');
+    cy.get('#subjectsInput').type('Math{enter}');
 
-    cy.contains('label', 'Sports')
-      .click();
-
-    cy.contains('label', 'Music')
-      .click();
+    cy.get('label[for="hobbies-checkbox-1"]').click();
+    cy.get('label[for="hobbies-checkbox-3"]').click();
 
     cy.get('#currentAddress')
+      .should('be.visible')
       .type('Melbourne 1913-454 Avenue');
 
     cy.get('#state')
